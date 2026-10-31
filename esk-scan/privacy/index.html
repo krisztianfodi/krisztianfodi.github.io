@@ -17,6 +17,8 @@
   nav a, a { color: var(--accent); }
   hr { border: 0; border-top: 1px solid var(--line); margin: 48px 0; }
   ul { padding-left: 1.3em; }
+  .reveal { font: inherit; font-size: 0.9rem; color: var(--accent); background: transparent; border: 1px solid currentColor; border-radius: 999px; padding: 2px 14px; cursor: pointer; }
+  .reveal:hover, .reveal:focus-visible { background: var(--line); outline: none; }
 </style>
 </head>
 <body>
@@ -31,7 +33,7 @@
 <p>Ez a nyilatkozat az <strong>ESK Scan</strong> Android-alkalmazásra vonatkozik (Google Play: <code>com.esk.scan.play</code>). Az ESK Scan a telefon kamerájával vonalkódot olvas be, és a kódot a felhasználó saját Windows-gépére küldi, ahol az ESK Scan Windows-alkalmazás begépeli az éppen aktív mezőbe.</p>
 
 <h2>Az adatkezelő</h2>
-<p>Fődi Krisztián (magánszemély)<br>E-mail: <a href="mailto:appfeedback@krisztianfodi.hu">appfeedback@krisztianfodi.hu</a></p>
+<p>Fődi Krisztián (magánszemély)<br>E-mail: <span class="email"><noscript>appfeedback kukac krisztianfodi pont hu</noscript><button type="button" class="reveal" hidden>E-mail-cím megjelenítése</button></span></p>
 
 <h2>Röviden</h2>
 <ul>
@@ -86,7 +88,7 @@
 <p>This policy applies to the <strong>ESK Scan</strong> Android app (Google Play: <code>com.esk.scan.play</code>). ESK Scan reads barcodes with the phone's camera and sends them to the user's own Windows PC, where the ESK Scan Windows app types them into the active field.</p>
 
 <h2>Controller</h2>
-<p>Krisztián Fődi (private individual)<br>Email: <a href="mailto:appfeedback@krisztianfodi.hu">appfeedback@krisztianfodi.hu</a></p>
+<p>Krisztián Fődi (private individual)<br>Email: <span class="email"><noscript>appfeedback at krisztianfodi dot hu</noscript><button type="button" class="reveal" hidden>Show email address</button></span></p>
 
 <h2>Summary</h2>
 <ul>
@@ -133,5 +135,19 @@
 </section>
 
 </main>
+<script>
+  // The address is not in the page source: it is put together only after a click, so harvesting bots miss it.
+  document.querySelectorAll('.email').forEach(function (box) {
+    var button = box.querySelector('.reveal');
+    button.hidden = false;
+    button.addEventListener('click', function () {
+      var address = ['kcabdeefppa', 'uh.idofnaitzsirk'].map(function (s) { return s.split('').reverse().join(''); }).join('@');
+      var link = document.createElement('a');
+      link.href = 'mailto:' + address;
+      link.textContent = address;
+      box.replaceChildren(link);
+    });
+  });
+</script>
 </body>
 </html>
